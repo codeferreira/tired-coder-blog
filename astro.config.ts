@@ -4,15 +4,11 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel/serverless";
 
 import { SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel({
-    webAnalytics: { enabled: true },
-  }),
   site: SITE.website,
   integrations: [
     tailwind({
