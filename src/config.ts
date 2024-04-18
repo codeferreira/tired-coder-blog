@@ -7,7 +7,7 @@ export const SITE: Site = {
   title: "FerreiraCode",
   ogImage: "ferreiracode-og.jpg",
   lightAndDarkMode: true,
-  postPerPage: 4,
+  postPerPage: 5,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
 
