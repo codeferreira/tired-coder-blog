@@ -102,10 +102,18 @@ const socialImageURL = new URL(
 
     <script is:inline src="/toggle-theme.js"></script>
 
-    <script
-      async
-      src="https://analytics.ferreiracode.com/script.js"
-      data-website-id="2bc12e98-f263-4d4a-a5b1-b357417a1103"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2DV377E5SJ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-2DV377E5SJ");
+    </script>
   </head>
   <body>
     <slot />
