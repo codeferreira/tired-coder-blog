@@ -5,7 +5,7 @@ import getSortedPosts from "@utils/getSortedPosts";
 import getPagination from "@utils/getPagination";
 
 const posts = await getCollection("blog", ({ data }) => {
-  return data.lang === "en" && !data.draft;
+  return data.lang === "pt-br" && !data.draft;
 });
 
 const sortedPosts = getSortedPosts(posts);

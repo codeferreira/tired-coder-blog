@@ -6,6 +6,7 @@ title: "Splitting the Difference: My Journey into Ergonomic Keyboards and Pain-F
 slug: splitting-the-difference-ergonomic-keyboards
 featured: false
 draft: false
+lang: en
 tags:
   - keyboard
   - ergonomics

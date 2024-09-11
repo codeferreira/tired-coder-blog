@@ -4,45 +4,6 @@
 
 @layer base {
   /* ===== custom properties ===== */
-  @font-face {
-    font-family: "Monaspace Krypton";
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/MonaspaceKrypton-Regular.woff) format("woff");
-  }
-
-  @font-face {
-    font-family: "Monaspace Krypton";
-    font-style: italic;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/MonaspaceKrypton-Italic.woff) format("woff");
-  }
-
-  @font-face {
-    font-family: "Monaspace Krypton";
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/MonaspaceKrypton-Bold.woff) format("woff");
-  }
-
-  @font-face {
-    font-family: "Monaspace Krypton";
-    font-style: italic;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/MonaspaceKrypton-BoldItalic.woff) format("woff");
-  }
-
-  @font-face {
-    font-family: "Monaspace Krypton";
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/MonaspaceKrypton-Light.woff) format("woff");
-  }
 
   :root,
   html[data-theme="light"] {
@@ -70,7 +31,7 @@
     display: block;
   }
   body {
-    @apply flex min-h-[100svh] flex-col bg-skin-fill font-mono text-skin-base 
+    @apply flex min-h-[100svh] flex-col bg-skin-fill font-sans text-skin-base 
     selection:bg-skin-accent selection:bg-opacity-70 selection:text-skin-inverted;
   }
   section,

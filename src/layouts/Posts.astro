@@ -7,6 +7,7 @@ import Footer from "@components/Footer.astro";
 import Pagination from "@components/Pagination.astro";
 import Card from "@components/Card";
 import { SITE } from "@config";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 export interface Props {
   currentPage: number;
@@ -15,15 +16,21 @@ export interface Props {
 }
 
 const { currentPage, totalPages, paginatedPosts } = Astro.props;
+
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
-<Layout title={`Posts | ${SITE.title}`}>
+<Layout title={`${t("title.posts")} - ${SITE.title}`}>
   <Header activeNav="posts" />
-  <Main pageTitle="Posts" pageDesc="All the articles I've posted.">
+  <Main pageTitle={t("title.posts")} pageDesc={t("all.posts")}>
     <ul>
       {
         paginatedPosts.map(({ data, slug }) => (
-          <Card href={`/posts/${slug}/`} frontmatter={data} />
+          <Card
+            href={`${currentLang === "en" ? "" : "/pt-br"}/posts/${slug}/`}
+            frontmatter={data}
+          />
         ))
       }
     </ul>
@@ -32,8 +39,8 @@ const { currentPage, totalPages, paginatedPosts } = Astro.props;
   <Pagination
     {currentPage}
     {totalPages}
-    prevUrl={`/posts${currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""}/`}
-    nextUrl={`/posts/${currentPage + 1}/`}
+    prevUrl={`${currentLang === "en" ? "" : "/pt-br"}/posts${currentPage - 1 !== 1 ? "/" + (currentPage - 1) : ""}/`}
+    nextUrl={`${currentLang === "en" ? "" : "/pt-br"}/posts/${currentPage + 1}/`}
   />
 
   <Footer noMarginTop={totalPages > 1} />

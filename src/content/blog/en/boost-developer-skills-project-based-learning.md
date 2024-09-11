@@ -4,13 +4,14 @@ pubDatetime: 2024-05-28T16:22:00Z
 modDatetime: 2024-05-28T16:22:00Z
 title: Boost Your Developer Skills with Project-Based Learning
 slug: boost-skills-through-project-based-learning
+lang: en
 featured: false
 draft: false
 tags:
   - journal
   - project-ideas
   - learning
-description: Discover how project-based learning can enhance your logical thinking and help you finish projects. Learn from real examples and practical steps to advance your development skills.
+description: Boost your logical thinking with project-based learning. Discover practical steps and real examples to enhance your development skills and complete projects.
 ---
 
 ## How Project-Based Learning Can Help Developers Improve Their Logical Thinking and Finish Projects

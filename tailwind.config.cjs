@@ -54,7 +54,7 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        mono: ["Monaspace Krypton", "monospace"],
+        sans: ["droid-sans", "sans-serif"],
       },
 
       typography: {

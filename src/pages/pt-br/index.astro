@@ -12,7 +12,7 @@ import { SOCIALS } from "@config";
 import { useTranslations } from "@i18n/utils";
 
 const posts = await getCollection("blog", ({ data }) => {
-  return data.lang === "en" && !data.draft;
+  return data.lang === "pt-br" && !data.draft;
 });
 
 const sortedPosts = getSortedPosts(posts);
@@ -21,7 +21,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 const socialCount = SOCIALS.filter(social => social.active).length;
 const yearsOfExperience = new Date().getFullYear() - 2015;
 
-const t = useTranslations("en");
+const t = useTranslations("pt-br");
 ---
 
 <Layout>
@@ -49,9 +49,9 @@ const t = useTranslations("en");
         </a>
 
         <p>
-          Surviving {yearsOfExperience}+ years in Software Development, I've
-          battled bugs, shipped global projects, and delivered scalable
-          solutions—almost keeping my sanity intact.
+          Sobrevivendo a mais de {yearsOfExperience} anos em Desenvolvimento de Software,
+          já enfrentei bugs, entreguei projetos globais e desenvolvi soluções escaláveis—quase
+          mantendo minha sanidade intacta.
         </p>
 
         {
@@ -95,7 +95,7 @@ const t = useTranslations("en");
           <ul>
             {recentPosts.slice(0, 4).map(({ data, slug }) => (
               <Card
-                href={`/posts/${slug}/`}
+                href={`/pt-br/posts/${slug}/`}
                 frontmatter={data}
                 secHeading={false}
               />

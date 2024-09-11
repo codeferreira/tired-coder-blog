@@ -3,8 +3,10 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://ferreiracode.com", // replace this with your deployed domain
   author: "José Ferreira",
-  desc: "Surviving the IT World since 2015",
+  profile: "https://ferreiracode.com",
+  desc: "Dive into FerreiraCode for perspectives on IT and Software Development. Explore my journey, insights, and the latest tech trends since 2015.",
   title: "FerreiraCode",
+  fullTitle: "FerreiraCode - Insights on IT and Software Development",
   ogImage: "ferreiracode-og.jpg",
   lightAndDarkMode: true,
   postPerPage: 5,
@@ -143,5 +145,11 @@ export const SOCIALS: SocialObjects = [
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Mastodon`,
     active: false,
+  },
+  {
+    name: "Bluesky",
+    href: "https://bsky.app/profile/ferreiracode.com",
+    linkTitle: `${SITE.title} on Bluesky`,
+    active: true,
   },
 ];

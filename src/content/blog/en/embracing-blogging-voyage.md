@@ -6,6 +6,7 @@ title: Embracing a Blogging Voyage After 7 Years in Code
 slug: embracing-blogging-voyage
 featured: false
 draft: false
+lang: en
 tags:
   - blogging
   - journal

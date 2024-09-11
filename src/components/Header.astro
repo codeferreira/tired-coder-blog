@@ -2,19 +2,26 @@
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
+import LanguagePicker from "./LanguagePicker.astro";
+import { getLangFromUrl, useTranslations } from "@i18n/utils";
 
 export interface Props {
   activeNav?: "posts" | "tags" | "about" | "search";
 }
 
 const { activeNav } = Astro.props;
+const currentLang = getLangFromUrl(Astro.url);
+const t = useTranslations(currentLang);
 ---
 
 <header>
   <a id="skip-to-content" href="#main-content">Skip to content</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo flex items-center gap-3 whitespace-nowrap">
+      <a
+        href={currentLang === "en" ? "/" : "/pt-br/"}
+        class="logo flex items-center gap-3 whitespace-nowrap"
+      >
         <img
           src={`/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`}
           alt={SITE.title}
@@ -51,13 +58,19 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <a href="/posts/" class={activeNav === "posts" ? "active" : ""}>
-              Posts
+            <a
+              href={currentLang === "en" ? "/posts/" : "/pt-br/posts/"}
+              class={activeNav === "posts" ? "active" : ""}
+            >
+              {t("nav.posts")}
             </a>
           </li>
           <li>
-            <a href="/tags/" class={activeNav === "tags" ? "active" : ""}>
-              Tags
+            <a
+              href={currentLang === "en" ? "/tags/" : "/pt-br/tags/"}
+              class={activeNav === "tags" ? "active" : ""}
+            >
+              {t("nav.tags")}
             </a>
           </li>
           <!-- <li> -->
@@ -105,6 +118,7 @@ const { activeNav } = Astro.props;
             )
           }
         </ul>
+        <LanguagePicker currentLang={currentLang} />
       </nav>
     </div>
   </div>

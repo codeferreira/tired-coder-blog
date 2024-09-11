@@ -1,14 +1,18 @@
 ---
-import { LOCALE, SITE } from "@config";
+import { SITE } from "@config";
 import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
+
+const currentLang = Astro.url.pathname.startsWith("/pt-br") ? "pt-br" : "en";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export interface Props {
   title?: string;
   author?: string;
+  profile?: string;
+  fullTitle?: string;
   description?: string;
   ogImage?: string;
   canonicalURL?: string;
@@ -18,8 +22,10 @@ export interface Props {
 }
 
 const {
-  title = SITE.title,
+  title,
+  fullTitle = SITE.fullTitle,
   author = SITE.author,
+  profile = SITE.profile,
   description = SITE.desc,
   ogImage = SITE.ogImage,
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
@@ -32,13 +38,26 @@ const socialImageURL = new URL(
   ogImage ?? SITE.ogImage ?? "og.png",
   Astro.url.origin
 ).href;
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: `${title}`,
+  image: `${socialImageURL}`,
+  datePublished: `${pubDatetime?.toISOString()}`,
+  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+  author: [
+    {
+      "@type": "Person",
+      name: `${author}`,
+      url: `${profile}`,
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html
-  lang=`${LOCALE.lang ?? "en"}`
-  class={`${scrollSmooth && "scroll-smooth"}`}
->
+<html lang={currentLang} class={`${scrollSmooth && "scroll-smooth"}`}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -47,14 +66,14 @@ const socialImageURL = new URL(
     <meta name="generator" content={Astro.generator} />
 
     <!-- General Meta Tags -->
-    <title>{title}</title>
-    <meta name="title" content={title} />
+    <title>{title ?? fullTitle}</title>
+    <meta name="title" content={title ?? fullTitle} />
     <meta name="description" content={description} />
     <meta name="author" content={author} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={title ?? fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={socialImageURL} />
@@ -80,11 +99,17 @@ const socialImageURL = new URL(
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
+    <meta property="twitter:title" content={title ?? fullTitle} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={socialImageURL} />
 
     <meta name="theme-color" content="dark" />
+    <link rel="stylesheet" href="https://use.typekit.net/pbw4kcs.css" />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
 
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
@@ -108,6 +133,7 @@ const socialImageURL = new URL(
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {
+        // eslint-disable-next-line no-undef
         dataLayer.push(arguments);
       }
       gtag("js", new Date());

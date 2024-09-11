@@ -19,6 +19,7 @@ const blog = defineCollection({
         .or(z.string())
         .optional(),
       description: z.string(),
+      lang: z.enum(["en", "pt-br"]),
       canonicalURL: z.string().optional(),
       readingTime: z.string().optional(),
     }),

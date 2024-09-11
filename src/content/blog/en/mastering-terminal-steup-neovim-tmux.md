@@ -6,6 +6,7 @@ title: "Mastering the Terminal: My Developer Setup with Neovim and Tmux (Part 1)
 slug: mastering-terminal-setup-neovim-tmux
 featured: false
 draft: true
+lang: en
 tags:
   - setup
   - neovim
