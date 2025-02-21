@@ -28,7 +28,7 @@ const { currentLang } = Astro.props;
           /^\/[^/]+|^\//,
           `/${newLang === "en" ? "" : newLang}`
         );
-        window.location.pathname = newPath;
+        window.location.href = newPath; // Use href to reload the page
       }
     });
   }

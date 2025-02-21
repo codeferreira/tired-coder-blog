@@ -3,8 +3,9 @@ import { SITE } from "@config";
 import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { getLangFromUrl } from "@i18n/utils";
 
-const currentLang = Astro.url.pathname.startsWith("/pt-br") ? "pt-br" : "en";
+const currentLang = getLangFromUrl(Astro.url);
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
